@@ -35,6 +35,13 @@ async function evaluate(expression) {
   if (result.exceptionDetails) throw new Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
+async function captureLight(name,selector,maxHeight=900){
+  await evaluate("applyTheme('light')");
+  await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
+  const clip=await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:Math.min(r.height,${maxHeight}),scale:1}})()`);
+  const capture=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip});
+  await writeFile(path.join(outputDir,name),Buffer.from(capture.data,'base64'));
+}
 async function navigate(url) {
   await command('Page.navigate', {url});
   await until(() => evaluate("document.readyState === 'complete' && !!document.querySelector('.draw-console')"), 'Page did not load');
@@ -93,6 +100,9 @@ try {
   await evaluate('Promise.all(document.getAnimations().map(a=>a.finished.catch(()=>{})))');
   let shot=await command('Page.captureScreenshot',{format:'png'});
   await writeFile(path.join(outputDir,'warehouse-desktop.png'),Buffer.from(shot.data,'base64'));
+  await captureLight('warehouse-light.png','#warehouse-view',850);
+  await captureLight('selection-light.png','#warehouse-grid',570);
+  await evaluate("applyTheme('dark')");
   await evaluate("location.hash='lab'");
   await until(()=>evaluate("flow.view==='lab'"),'Idea lab did not open');
   await evaluate("document.getElementById('research-question').value='只使用公开数据，先验证跨组织迁移；这是测试任务。';document.getElementById('research-question').dispatchEvent(new Event('input',{bubbles:true}));");
@@ -122,6 +132,9 @@ try {
   const metrics=await command('Page.getLayoutMetrics');
   shot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width:1360,height:Math.min(1800,metrics.cssContentSize.height),scale:1}});
   await writeFile(path.join(outputDir,'idea-lab-desktop.png'),Buffer.from(shot.data,'base64'));
+  await captureLight('idea-lab-light.png','#lab-view',1500);
+  await captureLight('composer-light.png','.lab-composer',700);
+  await captureLight('evidence-light.png','#idea-result',800);
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false});
   await evaluate("applyTheme('light');window.scrollTo(0,0)");
   await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');

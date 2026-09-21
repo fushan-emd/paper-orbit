@@ -76,6 +76,10 @@ try {
   await evaluate("document.querySelector('#tour-collapse').click()");
   let settingsShot=await command('Page.captureScreenshot',{format:'png'});
   await writeFile(path.join(outputDir,'settings-simple-desktop.png'),Buffer.from(settingsShot.data,'base64'));
+  await evaluate("document.documentElement.dataset.theme='light'");
+  settingsShot=await command('Page.captureScreenshot',{format:'png'});
+  await writeFile(path.join(outputDir,'settings-light.png'),Buffer.from(settingsShot.data,'base64'));
+  await evaluate("document.documentElement.dataset.theme='dark'");
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   assert.equal(await evaluate("document.documentElement.scrollWidth<=innerWidth"),true);
   settingsShot=await command('Page.captureScreenshot',{format:'png'});
@@ -128,6 +132,10 @@ try {
   await evaluate("applyTheme('dark');window.scrollTo(0,0)");
   let shot = await command('Page.captureScreenshot', {format:'png'});
   await writeFile(path.join(outputDir, 'discovery-home.png'), Buffer.from(shot.data,'base64'));
+  await evaluate("applyTheme('light')");
+  shot=await command('Page.captureScreenshot',{format:'png'});
+  await writeFile(path.join(outputDir,'overview-light.png'),Buffer.from(shot.data,'base64'));
+  await evaluate("applyTheme('dark')");
 
   await evaluate("document.querySelector('[data-count=\"1\"]').click()");
   await until(() => evaluate('!state.busy && state.revealed.size === 1'), 'Single draw failed');
@@ -175,6 +183,10 @@ try {
   let layout=await command('Page.getLayoutMetrics');
   shot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width:1360,height:layout.cssContentSize.height,scale:1}});
   await writeFile(path.join(outputDir,'discovery-ten-dark.png'),Buffer.from(shot.data,'base64'));
+  await evaluate("applyTheme('light');document.getElementById('draw-results').scrollIntoView()");
+  shot=await command('Page.captureScreenshot',{format:'png'});
+  await writeFile(path.join(outputDir,'cards-light.png'),Buffer.from(shot.data,'base64'));
+  await evaluate("applyTheme('dark')");
 
   // A failed quick-save is visible and can be retried without losing a card.
   await evaluate(`window.originalFetch=window.fetch;window.fetch=async()=>{throw new Error('Simulated offline');};document.querySelector('[data-action=favorite]').click();`);

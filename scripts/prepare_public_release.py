@@ -9,7 +9,7 @@ import shutil
 import tomllib
 
 ROOT_FILES = {
-    '.gitignore', '.gitattributes', 'LICENSE', 'README.md', 'DESKTOP_APP.md', 'PUBLIC_RELEASE.md',
+    '.gitignore', '.gitattributes', 'LICENSE', 'README.md', 'README.en.md', 'DESKTOP_APP.md', 'PUBLIC_RELEASE.md',
     'PRIVACY.md', 'THIRD_PARTY_NOTICES.md', 'CHANGELOG.md',
     'desktop_app.py', 'web_app.py', 'main.py', 'BioinfoLiteratureRadar.spec',
     'requirements.txt', 'requirements-runtime.lock', 'requirements-build.lock',
@@ -17,7 +17,7 @@ ROOT_FILES = {
 }
 SCRIPT_FILES = {
     'build_desktop_app.ps1', 'run_daily.ps1', 'run_web.ps1', 'start_desktop_app.ps1',
-    'start_clean_workspace.ps1', 'prepare_public_release.py', 'check_sources.py',
+    'start_clean_workspace.ps1', 'prepare_public_release.py', 'render_readme.mjs', 'check_sources.py',
     'validate_release.py', 'verify_artifact.py', 'smoke_packaged.py', 'test_installer.ps1',
 }
 PATTERNS = [
@@ -29,7 +29,7 @@ PATTERNS = [
 def allowed(rel):
     name=rel.as_posix()
     if name in ROOT_FILES or name == 'PUBLIC_MANIFEST.json': return True
-    if name in {'docs/images/overview.png','docs/images/cards.png','docs/images/warehouse.png','docs/images/settings.png'}: return True
+    if name in {'docs/images/overview.png','docs/images/cards.png','docs/images/warehouse.png','docs/images/settings.png','docs/images/hero-zh.png','docs/images/hero-en.png','docs/images/idea-lab.png'}: return True
     parts=rel.parts
     if '__pycache__' in parts or any(x.startswith('.') for x in parts): return False
     if name in {'installer/config.toml','installer/BioinfoLiteratureRadar.iss'}: return True

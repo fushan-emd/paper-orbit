@@ -26,3 +26,4 @@ Runtime dependency versions and license material from the installed distribution
 Windows builds also bundle the Python runtime and WebView2 loader. Python license and bundled component notices must accompany the artifact. Microsoft Edge WebView2 Runtime is a separate prerequisite under Microsoft terms.
 
 Publication metadata and abstracts are not covered by MIT; see PRIVACY.md and source-specific policies.
+The Python runtime license is included in `third_party_licenses/python-runtime.txt`.

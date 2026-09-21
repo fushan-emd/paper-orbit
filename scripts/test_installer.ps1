@@ -5,7 +5,7 @@ $CheckRoot=[IO.Path]::GetFullPath((Join-Path $ProjectRoot 'release_validation'))
 $InstallRoot=[IO.Path]::GetFullPath((Join-Path $CheckRoot 'installed-smoke'))
 if (-not $InstallRoot.StartsWith($CheckRoot + [IO.Path]::DirectorySeparatorChar)) { throw 'Invalid test installation path' }
 $Source=Get-Content -LiteralPath installer/BioinfoLiteratureRadar.iss -Raw
-$Source=$Source.Replace('AC491EC2-595E-4E7E-B2C6-A3C3FB763E59','E9091329-A29A-4A25-A522-3B76D848B85E').Replace('#define MyAppName "Paper Orbit"','#define MyAppName "Paper Orbit Release Smoke"').Replace('PaperOrbit-0.4.0-beta.2-Setup','PaperOrbit-Release-Smoke-Setup').Replace('Source: "config.toml";','Source: "..\installer\config.toml";')
+$Source=$Source.Replace('AC491EC2-595E-4E7E-B2C6-A3C3FB763E59','E9091329-A29A-4A25-A522-3B76D848B85E').Replace('#define MyAppName "Paper Orbit"','#define MyAppName "Paper Orbit Release Smoke"').Replace('PaperOrbit-0.4.0-beta.3-Setup','PaperOrbit-Release-Smoke-Setup').Replace('Source: "config.toml";','Source: "..\installer\config.toml";')
 $Spec=Join-Path $CheckRoot 'smoke-installer.iss'
 [IO.File]::WriteAllText($Spec,$Source,[Text.UTF8Encoding]::new($false))
 $Iscc=Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 6\ISCC.exe'

@@ -12,6 +12,6 @@ required=['BioinfoLiteratureRadar.exe','_internal/LICENSE','_internal/PRIVACY.md
 assert all((dist/p).is_file() for p in required)
 manifest={p.relative_to(dist).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 (out/'artifact-manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
-installer=root/'release/PaperOrbit-0.4.0-beta.2-Setup.exe'
+installer=root/'release/PaperOrbit-0.4.0-beta.3-Setup.exe'
 if installer.exists():(installer.with_suffix('.sha256')).write_text(hashlib.sha256(installer.read_bytes()).hexdigest()+'  '+installer.name+'\n',encoding='utf-8')
 print(json.dumps({'artifact_files':len(files),'no_database_or_secret_files':True,'installer':installer.exists()}))

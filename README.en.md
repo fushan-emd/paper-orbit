@@ -8,6 +8,8 @@
 
 A local research workspace for Windows · MIT · Beta
 
+**[Download for Windows](https://github.com/fushan-emd/paper-orbit/releases/download/v0.4.0-beta.3/PaperOrbit-0.4.0-beta.3-Setup.exe)** · [Release notes](https://github.com/fushan-emd/paper-orbit/releases/tag/v0.4.0-beta.3)
+
 [Multi-paper synthesis](#multi-paper-synthesis) · [Quick start](#quick-start) · [Product tour](#product-tour) · [Data and privacy](#data-and-privacy)
 
 </div>
@@ -95,6 +97,18 @@ A guided tour follows you through settings, collection, draws, the warehouse, th
 
 ## Quick start
 
+### Install on Windows (recommended)
+
+**[Download Paper Orbit v0.4.0-beta.3](https://github.com/fushan-emd/paper-orbit/releases/download/v0.4.0-beta.3/PaperOrbit-0.4.0-beta.3-Setup.exe)** · [Release notes and SHA-256 checksum](https://github.com/fushan-emd/paper-orbit/releases/tag/v0.4.0-beta.3)
+
+1. Download and run the installer. A separate Python installation is not required.
+2. Open Paper Orbit from the Start menu and follow the guide to configure your research interests and sources.
+3. If WebView2 is missing, install Microsoft's [WebView2 Runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) and restart the app.
+
+For Windows x64. The installer is currently unsigned; download it from this repository's Releases and verify the SHA-256 checksum if needed. No personal literature database or API keys are bundled. Uninstalling preserves the separate user workspace.
+
+### Run from source
+
 The primary platform is **Windows**, with **Python 3.13** used for development and validation. The desktop window uses WebView2; local browser mode is also available.
 
 ```powershell
@@ -156,7 +170,7 @@ Build instructions: [DESKTOP_APP.md](DESKTOP_APP.md). Private/public source sepa
 
 ## Status and known limitations
 
-This is a **Beta source release**, without a newly attached installer. Existing local Beta.2 installers do not represent all current source changes.
+This project provides **Beta source code and a Windows x64 installer**. The current installer is **v0.4.0-beta.3**; later changes on main may precede the next installer release.
 
 - Windows is the primary validation target; clean systems, missing WebView2, accessibility and other compatibility cases need independent testing.
 - No cloud sync or team collaboration. Running tasks do not automatically resume after exit.

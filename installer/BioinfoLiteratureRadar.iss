@@ -1,19 +1,19 @@
 #define MyAppName "Paper Orbit"
-#define MyAppVersion "0.4.0"
-#define MyAppPublisher "Bioinfo Literature Radar"
+#define MyAppVersion "0.4.0.3"
+#define MyAppPublisher "Paper Orbit contributors"
 #define MyAppExeName "BioinfoLiteratureRadar.exe"
 
 [Setup]
 AppId={{AC491EC2-595E-4E7E-B2C6-A3C3FB763E59}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-AppVerName=Paper Orbit 0.4.0-beta.2
+AppVerName=Paper Orbit 0.4.0-beta.3
 LicenseFile=..\LICENSE
 AppPublisher={#MyAppPublisher}
 DefaultDirName={localappdata}\Programs\Bioinfo Literature Radar
 DefaultGroupName={#MyAppName}
 OutputDir=..\release
-OutputBaseFilename=PaperOrbit-0.4.0-beta.2-Setup
+OutputBaseFilename=PaperOrbit-0.4.0-beta.3-Setup
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern

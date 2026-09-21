@@ -8,6 +8,8 @@
 
 Windows 本地科研工作区 · MIT 开源 · Beta
 
+**[下载 Windows 安装包](https://github.com/fushan-emd/paper-orbit/releases/download/v0.4.0-beta.3/PaperOrbit-0.4.0-beta.3-Setup.exe)** · [版本说明](https://github.com/fushan-emd/paper-orbit/releases/tag/v0.4.0-beta.3)
+
 [多卡片汇聚分析](#多卡片汇聚分析) · [快速开始](#快速开始) · [功能预览](#功能预览) · [数据与隐私](#数据与隐私) · [开发与验证](#开发与验证)
 
 </div>
@@ -95,6 +97,18 @@ Windows 本地科研工作区 · MIT 开源 · Beta
 
 ## 快速开始
 
+### Windows 下载安装（推荐）
+
+**[下载 Paper Orbit v0.4.0-beta.3 安装包](https://github.com/fushan-emd/paper-orbit/releases/download/v0.4.0-beta.3/PaperOrbit-0.4.0-beta.3-Setup.exe)** · [版本说明与 SHA-256 校验文件](https://github.com/fushan-emd/paper-orbit/releases/tag/v0.4.0-beta.3)
+
+1. 下载并运行安装程序，按提示完成安装；无需单独安装 Python。
+2. 从开始菜单打开 Paper Orbit，跟随教程检查研究方向与文献来源。
+3. 如提示缺少 WebView2，请安装微软官方 [WebView2 Runtime](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)，然后重启应用。
+
+适用于 Windows x64，当前安装包未代码签名。请从本仓库 Release 下载并按需核对 SHA-256。程序不附带个人文献库或 API 密钥；卸载会保留独立用户工作区。
+
+### 从源码运行
+
 当前主要支持 **Windows**，开发验证环境为 **Python 3.13**。桌面窗口使用 WebView2；也可用本地浏览器打开。
 
 ```powershell
@@ -156,7 +170,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_clean_workspac
 
 ## 当前状态与已知限制
 
-本仓库为 **Beta 源码发布**，当前不附带新的安装包。既有本地 Beta.2 安装包不代表这里的最新源码。
+本仓库提供 **Beta 源码与 Windows x64 安装包**。当前安装版为 **v0.4.0-beta.3**，后续 main 分支的源码可能先于下一次安装包发布。
 
 - 当前主要验证 Windows；干净系统、WebView2 缺失、辅助功能等仍需独立验收。
 - 无云同步和团队协作；关闭软件后，正在执行的任务不自动续跑。

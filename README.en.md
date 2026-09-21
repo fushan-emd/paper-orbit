@@ -2,7 +2,7 @@
 
 # ✧ Paper Orbit
 
-**Multi-paper synthesis: connect literature to testable research hypotheses.**
+**Discover more in your reading: collect papers, draw cards and connect research ideas.**
 
 [简体中文](README.md) · **English**
 
@@ -10,38 +10,13 @@ A local research workspace for Windows · MIT · Beta
 
 **[Download for Windows](https://github.com/fushan-emd/paper-orbit/releases/download/v0.4.0-beta.3/PaperOrbit-0.4.0-beta.3-Setup.exe)** · [Release notes](https://github.com/fushan-emd/paper-orbit/releases/tag/v0.4.0-beta.3)
 
-[Multi-paper synthesis](#multi-paper-synthesis) · [Quick start](#quick-start) · [Product tour](#product-tour) · [Data and privacy](#data-and-privacy)
+[Product tour](#product-tour) · [Quick start](#quick-start) · [Multi-paper synthesis](#multi-paper-synthesis) · [Data and privacy](#data-and-privacy)
 
 </div>
 
-![Paper Orbit: select paper cards, ask a question, synthesize evidence and plan validation](docs/images/hero-en.png)
+![Paper Orbit home in light mode](docs/images/overview.png)
 
 > **About the screenshots:** All screenshots come from isolated test environments with synthetic papers and mocked AI responses. Titles, ratings and research content illustrate the interface; they are not scientific findings or verified publications. The screenshots do not use the author's private library. The interface shown here is in Chinese.
-
-## Multi-paper synthesis
-
-**Bring 2–6 papers together around one research question and explore how their ideas might connect.**
-
-Select papers from your warehouse and ask AI to analyze their methods, tasks and evidence together, producing **1–2 hypotheses to test**. Card draws help you discover material; synthesis helps you consider what to investigate next.
-
-| Your input | How the workbench structures the output |
-| --- | --- |
-| 2–6 paper cards | A rationale for combining papers, with source excerpts from at least two input papers for each hypothesis |
-| A focused research question | A testable hypothesis and an explanation of how the papers contribute |
-| Optional resource or experimental constraints | A minimal experiment, baselines and controls, evaluation metrics, and potential falsification criteria |
-
-### From selection to a validation plan
-
-1. **Select:** Choose 2–6 papers across warehouse pages and open the idea lab.
-2. **Ask:** Describe your question and constraints, such as public datasets only or a low-cost initial experiment.
-3. **Synthesize:** Generate a combination rationale, hypothesis, experimental plan, evaluation criteria, risks and novelty-search directions.
-4. **Check:** Compare the reasoning with the supplied source excerpts, then consult the original papers.
-
-![Light-mode idea lab with selected paper cards, a research question and source-linked synthesis](docs/images/idea-lab.png)
-
-Outputs include **the research question, a testable hypothesis, combination rationale, minimal experiment and controls, evaluation and falsification criteria, risks and evidence gaps, follow-up novelty searches, and source excerpts**. Selection drafts and generation history stay in your local workspace.
-
-> **Evidence boundary:** Synthesis uses the selected papers' titles and abstracts. Previous AI summaries and scores are not treated as scientific evidence. The application checks source IDs, excerpt matches and cross-paper source requirements. It does not verify that an excerpt semantically supports a claim, replace full-text review, establish experimental validity or confirm novelty.
 
 ## Why Paper Orbit?
 
@@ -52,8 +27,6 @@ There are currently no cloud accounts or synchronization services. AI features u
 ## Product tour
 
 ### 1. Collect papers, then draw a new perspective
-
-![Paper Orbit home in light mode](docs/images/overview.png)
 
 - Collect from PubMed, bioRxiv, arXiv and OpenAlex. The default profile targets bioinformatics; keywords and source queries are configurable.
 - Draw **one, five or ten cards** with equal probability across eligible papers and no repeats within a round.
@@ -80,7 +53,34 @@ Drawn cards remain in your warehouse. Favorite papers, filter the collection, tr
 
 Combine your selected cards in the idea lab and revisit saved drafts and generation history as your question develops.
 
-### 3. Start with simple settings
+<a id="multi-paper-synthesis"></a>
+
+### 3. Multi-paper synthesis
+
+**Bring 2–6 papers together around one research question and explore how their ideas might connect.**
+
+Select papers from your warehouse and ask AI to analyze their methods, tasks and evidence together, producing **1–2 hypotheses to test**. Card draws help you discover material; synthesis helps you consider what to investigate next.
+
+| Your input | How the workbench structures the output |
+| --- | --- |
+| 2–6 paper cards | A rationale for combining papers, with source excerpts from at least two input papers for each hypothesis |
+| A focused research question | A testable hypothesis and an explanation of how the papers contribute |
+| Optional resource or experimental constraints | A minimal experiment, baselines and controls, evaluation metrics, and potential falsification criteria |
+
+#### From selection to a validation plan
+
+1. **Select:** Choose 2–6 papers across warehouse pages and open the idea lab.
+2. **Ask:** Describe your question and constraints, such as public datasets only or a low-cost initial experiment.
+3. **Synthesize:** Generate a combination rationale, hypothesis, experimental plan, evaluation criteria, risks and novelty-search directions.
+4. **Check:** Compare the reasoning with the supplied source excerpts, then consult the original papers.
+
+![Light-mode idea lab with selected paper cards, a research question and source-linked synthesis](docs/images/idea-lab.png)
+
+Outputs include **the research question, a testable hypothesis, combination rationale, minimal experiment and controls, evaluation and falsification criteria, risks and evidence gaps, follow-up novelty searches, and source excerpts**. Selection drafts and generation history stay in your local workspace.
+
+> **Evidence boundary:** Synthesis uses the selected papers' titles and abstracts. Previous AI summaries and scores are not treated as scientific evidence. The application checks source IDs, excerpt matches and cross-paper source requirements. It does not verify that an excerpt semantically supports a claim, replace full-text review, establish experimental validity or confirm novelty.
+
+### 4. Start with simple settings
 
 Basic settings cover research interests, collection sources and limits, and optional AI. Queries, model parameters, journals and credential management live in expandable advanced sections.
 
@@ -88,7 +88,7 @@ Basic settings cover research interests, collection sources and limits, and opti
 
 A guided tour follows you through settings, collection, draws, the warehouse, the idea lab, the library and data management. Collapse it, go back, skip it or restart it; saving settings and refreshing do not end the tour.
 
-### 4. Manage data and background tasks
+### 5. Manage data and background tasks
 
 - Back up and restore the SQLite database, or export papers as JSON. Restoration first backs up the current database.
 - Inspect collection and generation tasks and cancel subsequent work.

@@ -1,0 +1,37 @@
+# Personal runtime data: never publish
+/data/
+/logs/
+/reports/
+/backups/
+/config.toml
+/config.toml.*
+/config.yaml
+/.workspace.lock
+.env
+.env.*
+!.env.example
+**/secrets.json
+*.sqlite
+*.sqlite-*
+*.db
+*.bak
+# Development environments and generated output
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.audit-venv/
+.release-venv/
+build/
+build_*/
+dist/
+dist_*/
+release/
+release_validation/
+release_wheels/
+public-release/
+private-preview/
+tests/artifacts/
+.agents/
+.codex/
+# Track installer/config.toml and the PyInstaller .spec explicitly.

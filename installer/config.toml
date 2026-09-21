@@ -1,0 +1,80 @@
+[project]
+name = "bioinfo-literature-radar"
+timezone = "Asia/Shanghai"
+report_dir = "reports"
+database = "data/papers.sqlite"
+
+[run]
+days_back = 2
+max_papers_per_source = 40
+min_score = 8
+
+[profile]
+description = "Bioinformatics literature radar for single-cell omics, spatial transcriptomics, virtual cells, and computational tools."
+include_keywords = ["single-cell", "single cell", "scRNA-seq", "snRNA-seq", "spatial transcriptomics", "spatial omics", "virtual cell", "cell foundation model", "foundation model", "deep learning", "bioinformatics", "computational biology", "multi-omics", "benchmark", "software", "pipeline"]
+core_keywords = ["single-cell", "single cell", "scRNA-seq", "snRNA-seq", "spatial transcriptomics", "spatial omics", "virtual cell", "cell foundation model", "foundation model", "bioinformatics", "computational biology", "multi-omics"]
+exclude_keywords = ["case report", "clinical trial protocol", "editorial", "comment"]
+
+[weights]
+"spatial transcriptomics" = 8
+"virtual cell" = 8
+"cell foundation model" = 8
+"single-cell" = 7
+"single cell" = 7
+"scRNA-seq" = 7
+"snRNA-seq" = 6
+"spatial omics" = 6
+"foundation model" = 6
+"multi-omics" = 5
+benchmark = 4
+software = 4
+pipeline = 3
+bioinformatics = 3
+"computational biology" = 3
+
+[sources.pubmed]
+enabled = true
+email = ""
+api_key = ""
+enable_journal_watch = true
+journal_profile_filter = true
+journal_max_results = 20
+query = "(single-cell OR \"single cell\" OR scRNA-seq OR snRNA-seq OR \"single-nucleus\" OR \"spatial transcriptomics\" OR \"spatial omics\" OR \"virtual cell\" OR \"foundation model\" OR \"deep learning\" OR \"machine learning\") AND (bioinformatics OR \"computational biology\" OR genomics OR transcriptomics)"
+journals = ["Nature", "Nature Biotechnology", "Nature Methods", "Nature Genetics", "Nature Communications", "Science", "Science Advances", "Cell", "Cell Genomics", "Genome Biology", "Bioinformatics", "PLOS Computational Biology"]
+
+[sources.biorxiv]
+enabled = true
+servers = ["biorxiv", "medrxiv"]
+
+[sources.arxiv]
+enabled = true
+query = "all:\"single cell\" OR all:\"spatial transcriptomics\" OR all:\"virtual cell\" OR all:\"foundation model\" OR all:\"bioinformatics\" OR all:\"computational biology\""
+categories = ["q-bio.GN", "q-bio.QM", "cs.LG", "cs.AI"]
+
+[sources.openalex]
+enabled = true
+mailto = ""
+query = "single cell spatial transcriptomics virtual cell foundation model bioinformatics"
+timeout_seconds = 12
+max_results = 20
+cooldown_minutes = 30
+
+[analysis]
+mode = "heuristic"
+language = "zh-CN"
+
+[analysis.deepseek]
+enabled = false
+api_key_env = "DEEPSEEK_API_KEY"
+base_url = "https://api.deepseek.com"
+model = "deepseek-v4-flash"
+temperature = 0.2
+max_tokens = 1800
+min_heuristic_score = 8
+
+[report]
+high_score_threshold = 18
+
+[web]
+language = "zh-CN"
+show_onboarding = true

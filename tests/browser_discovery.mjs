@@ -161,6 +161,24 @@ try {
   await evaluate("document.querySelector('[data-count=\"5\"]').click()");
   await until(() => evaluate('!state.busy && state.cards.length === 5'), 'Five draw failed');
   assert.equal(await evaluate('state.revealed.size'), 0);
+  if (process.env.PAPER_ORBIT_RECORD_GIF === '1') {
+    await evaluate("window.demoBatch=structuredClone(state.batch);applyTheme('light');document.getElementById('draw-results').scrollIntoView()");
+    await settleScreenshot();
+    const clip=await evaluate('({x:0,y:document.getElementById("draw-results").getBoundingClientRect().top+scrollY,width:1360,height:650,scale:0.8})');
+    await evaluate("state.cards.forEach((c,i)=>setTimeout(()=>reveal(c.id),850+i*550))");
+    const timestamps=[];
+    const start=Date.now();
+    while(Date.now()-start<5700){
+      const tick=Date.now();
+      const frame=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip});
+      timestamps.push(Date.now()-start);
+      await writeFile(path.join(outputDir,'flip-'+String(timestamps.length-1).padStart(3,'0')+'.png'),Buffer.from(frame.data,'base64'));
+      await pause(Math.max(0,80-(Date.now()-tick)));
+    }
+    await writeFile(path.join(outputDir,'flip-timestamps.json'),JSON.stringify(timestamps));
+    assert.equal(await evaluate('state.revealed.size'),5);
+    await evaluate('renderBatch(demoBatch)');
+  }
   await evaluate("document.querySelector('.card-back').click()");
   assert.equal(await evaluate('state.revealed.size'), 1);
   await evaluate("document.getElementById('save-batch').click()");

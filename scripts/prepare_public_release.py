@@ -29,7 +29,7 @@ PATTERNS = [
 def allowed(rel):
     name=rel.as_posix()
     if name in ROOT_FILES or name == 'PUBLIC_MANIFEST.json': return True
-    if name in {'docs/images/overview.png','docs/images/cards.png','docs/images/warehouse.png','docs/images/settings.png','docs/images/hero-zh.png','docs/images/hero-en.png','docs/images/idea-lab.png'}: return True
+    if name in {'docs/images/card-flip.gif','docs/images/overview.png','docs/images/cards.png','docs/images/warehouse.png','docs/images/settings.png','docs/images/hero-zh.png','docs/images/hero-en.png','docs/images/idea-lab.png'}: return True
     parts=rel.parts
     if '__pycache__' in parts or any(x.startswith('.') for x in parts): return False
     if name in {'installer/config.toml','installer/BioinfoLiteratureRadar.iss'}: return True
@@ -45,9 +45,9 @@ def inspect(path,rel):
     if path.is_symlink() or any(p.is_symlink() or (hasattr(p,'is_junction') and p.is_junction()) for p in [path,*path.parents]):
         raise ValueError('Links not allowed: '+str(rel))
     if not allowed(rel): raise ValueError('Unexpected public file: '+str(rel))
-    if rel.suffix=='.png':
+    if rel.suffix in {'.png','.gif'}:
         data=path.read_bytes()
-        if not data.startswith(b'\x89PNG\r\n\x1a\n') or len(data)>10*1024*1024: raise ValueError('Invalid documentation image: '+str(rel))
+        if not (data.startswith(b'\x89PNG\r\n\x1a\n') if rel.suffix=='.png' else data.startswith((b'GIF87a',b'GIF89a'))) or len(data)>10*1024*1024: raise ValueError('Invalid documentation image: '+str(rel))
         return
     text=path.read_text(encoding='utf-8',errors='replace')
     for kind,pattern in PATTERNS:
@@ -92,7 +92,7 @@ def main():
     destination.mkdir(parents=True,exist_ok=False)
     for path in selected:
         rel=path.relative_to(source);target=destination/rel;target.parent.mkdir(parents=True,exist_ok=True)
-        if rel.suffix=='.png':shutil.copyfile(path,target)
+        if rel.suffix in {'.png','.gif'}:shutil.copyfile(path,target)
         elif rel.suffix=='.md' and rel.parts[0]!='third_party_licenses':
             target.write_text(path.read_text(encoding='utf-8').replace('RELEASE_REVIEW.md','PUBLIC_RELEASE.md'),encoding='utf-8',newline='\n')
         else:target.write_text(path.read_text(encoding='utf-8'),encoding='utf-8',newline='\n')

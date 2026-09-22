@@ -59,14 +59,14 @@
     "main.py": "1e70ce0b5dc98c3712915b79414b5ef5cb6dd6040e6299d75548ed9eeca138d5",
     "PRIVACY.md": "34a5540eb5e09d4743e52083c9bb1c9d7a941ce1da56c60f5bb179e9d7379a89",
     "PUBLIC_RELEASE.md": "08b3dc079c55ff4af965d6560b79749789980c6657252fbff43a50871b1edc40",
-    "README.en.md": "6d796bbc2b77e2cd7c7927020d1f48b820db48b567dea66a9796e16a2eb99a46",
-    "README.md": "ecb18e01e77212c3f8c896323e727ad9e0899faa0208f802ad579d602ea37394",
+    "README.en.md": "e5c6cc8569eaac4f88ef57521983a6cd7ce10fe98de4dbb5a9e1e2d7a54f42f4",
+    "README.md": "a67829fd519b67a260994dc7fb9ba1ca24468fc66dfcb15cb5f163e0df287666",
     "requirements-build.lock": "6b18dad75a204be4b855b0c675ff80b81f050e9fc020064d71a9368caed4dc5c",
     "requirements-runtime.lock": "9b81d34e0bc62141cb80290e66b4ed17a60723402665d412cfef4a2fbd3eaa66",
     "requirements.txt": "f5e441a433e14e4a45367499dc583bc71d2b1f625583a74eb5704a47b28e5520",
     "scripts/build_desktop_app.ps1": "529c12dfea83cecb4506137e13952284aa9cbd92e0d8bd116097dec8b21a7c3a",
     "scripts/check_sources.py": "839230d03ea32e6d22219b6561b08f99cc212d338df33448697412262cf3074e",
-    "scripts/prepare_public_release.py": "a85f919ba0903d586de17d30c5b82f8bb55f935d5bbaf1ee16f29b1342d83b40",
+    "scripts/prepare_public_release.py": "1d67754c932446af97b9fb7f37ca404971b545ca75fbe4cbce241555a04738dc",
     "scripts/render_readme.mjs": "20dd3c5a0a215876dab0180911f116707a4cf21306d895fe0b37f8b4f14babf4",
     "scripts/run_daily.ps1": "a6c4bdb1f7d73a62c3e0a44fbb05f6d121d0e178f693d4349ce8a2451f00541b",
     "scripts/run_web.ps1": "941b087e693385932bc4622f407a9a0466236215433333a32eba49b14ab8df4e",
@@ -79,7 +79,7 @@
     "start_desktop_app.bat": "f3d4efe5cf44937dacb2bab2d3dcec0fb0f89fbbfcdd34e222e4b8937f7e4b04",
     "start_desktop_app.vbs": "4da1e3ebd70d6d3707d45eb9c417056cfc5c1580f574a9f64372152491e41f9e",
     "tests/browser_check.py": "2a9167b426220e64c0d201acee2f4f052b9720141841f41b6a9dbd4692bfbb63",
-    "tests/browser_discovery.mjs": "b4fa565aaf834be1b7466c1ef7386f4679c96b31d3de69448f6e9691c042fb2d",
+    "tests/browser_discovery.mjs": "2562be2f48a7e4a03e79badefbb39b877523d44498f457258d129d6f00b68b23",
     "tests/browser_discovery.py": "87b6a8e67fc16681404588ba5f31c449033b75fd7e699d44509bea22cfea7ed1",
     "tests/browser_library.mjs": "ee637a1d6231d4aa94be3f3f7175ca1fd49100efa85926d517bbf530f51774be",
     "tests/browser_workbench.mjs": "7f5fd88d28a9ffc34f9402635aad5cc31d9312b9c1d96434ca1067cdf571f786",
@@ -110,6 +110,7 @@
     "third_party_licenses/typing_extensions.txt": "2a94780e1dc8b20ed1d6b9bd37d2855ae50b4180f2ce36dfd9749197c3b53b72",
     "third_party_licenses/urllib3.txt": "8d6f9b3c92848211a92dea498bbf7002233385fd88cde26307ca2233b46c251f",
     "THIRD_PARTY_NOTICES.md": "45c23b3da0ed2757a088b68e358c38218ef4aab9c0e236469dad67439532d6aa",
-    "web_app.py": "74b9b8154499db25cdad56b78d0cdb66d3e4694771e82cabb8c67664fc458cea"
+    "web_app.py": "74b9b8154499db25cdad56b78d0cdb66d3e4694771e82cabb8c67664fc458cea",
+    "docs/images/card-flip.gif": "622de2f51e9966d7e65f714be8aaf4703b10fb17a8f003a5656488e7978acda4"
   }
 }

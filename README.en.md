@@ -33,6 +33,12 @@ There are currently no cloud accounts or synchronization services. AI features u
 - If fewer papers remain, the draw returns what is available. There is no artificial guaranteed-rarity mechanism.
 - Rare cards have reveal effects, with quick-reveal and reduced-motion support.
 
+**Card reveal demo · Five-card draw**
+
+![Five cards revealed one by one with rare-card effects](docs/images/card-flip.gif)
+
+*Recorded from the actual interface using synthetic demo papers. The GIF loops automatically.*
+
 ![Paper-card draw results with ratings, summaries and favorite actions](docs/images/cards.png)
 
 | Tier | AI score / 30 | Meaning |

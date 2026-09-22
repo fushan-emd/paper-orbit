@@ -35,6 +35,14 @@ async function evaluate(expression) {
   if (result.exceptionDetails) throw new Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
+async function settleScreenshot() {
+  await evaluate(`(async()=>{
+    await document.fonts.ready;
+    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    await Promise.all(document.getAnimations().filter(a=>a.effect.getComputedTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{})));
+    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  })()`);
+}
 async function navigate(url) {
   await command('Page.navigate', {url});
   await until(() => evaluate("document.readyState === 'complete' && !!document.querySelector('.draw-console')"), 'Page did not load');
@@ -133,6 +141,7 @@ try {
   let shot = await command('Page.captureScreenshot', {format:'png'});
   await writeFile(path.join(outputDir, 'discovery-home.png'), Buffer.from(shot.data,'base64'));
   await evaluate("applyTheme('light')");
+  await settleScreenshot();
   shot=await command('Page.captureScreenshot',{format:'png'});
   await writeFile(path.join(outputDir,'overview-light.png'),Buffer.from(shot.data,'base64'));
   await evaluate("applyTheme('dark')");
@@ -184,7 +193,9 @@ try {
   shot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width:1360,height:layout.cssContentSize.height,scale:1}});
   await writeFile(path.join(outputDir,'discovery-ten-dark.png'),Buffer.from(shot.data,'base64'));
   await evaluate("applyTheme('light');document.getElementById('draw-results').scrollIntoView()");
-  shot=await command('Page.captureScreenshot',{format:'png'});
+  await settleScreenshot();
+  const cardsClip=await evaluate('({x:0,y:scrollY,width:innerWidth,height:document.documentElement.scrollHeight-scrollY,scale:1})');
+  shot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:cardsClip});
   await writeFile(path.join(outputDir,'cards-light.png'),Buffer.from(shot.data,'base64'));
   await evaluate("applyTheme('dark')");
 
